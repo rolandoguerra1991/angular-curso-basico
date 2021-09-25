@@ -1,20 +1,10 @@
 import { Component } from '@angular/core';
-
-interface Personaje {
-  nombre: string;
-  porder: number;
-}
-
+import { Personaje } from '../interfaces/dbz.inderfaces';
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html'
 })
 export class MainPageComponent {
-
-  nuevo: Personaje = {
-    nombre: '',
-    porder: 0
-  }
 
   personajes: Personaje[] = [
     {
@@ -31,15 +21,13 @@ export class MainPageComponent {
     },
   ];
 
-  agregar() {
-    if (this.nuevo.nombre.trim().length === 0) {
-      return;
-    }
-    this.personajes.push(this.nuevo);
-    this.nuevo = {
-      nombre: '',
-      porder: 0,
-    }
+  nuevo: Personaje = {
+    nombre: 'Maestro Roshi',
+    porder: 100
+  }
+
+  agregarNuevoPersonaje(personaje: Personaje) {
+    this.personajes.push(personaje);
   }
 
 }
